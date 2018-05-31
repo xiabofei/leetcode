@@ -35,7 +35,7 @@ public:
 };
 */
 // 快排序解法 
-// 核心: 每次执行完一个pass之后 判断要找的topk可能出现在pivot的 左侧 / 右侧 / 当前位置
+// 核心: 每次执行完一个pass之后 判断要找的 topk 可能出现在pivot的 左侧 / 右侧 / 当前位置
 // target意义是: 每次执行完quick之后,要找到多少比pivot小的值
 // 1) 如果target比pivot左侧元素小 则目标元素在pivot左侧 target个数不变
 // 2) 如果target比pivot左侧的元素大 则目标元素在pivot右侧 且target应减少rp-b+1
