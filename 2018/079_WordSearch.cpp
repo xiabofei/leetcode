@@ -31,9 +31,7 @@ public:
     	for(int s = 0; s < 4; s++){
     		int r = i + row_step[s];
     		int c = j + col_step[s];
-    		if(
-    			r>=0 && r<board.size() && c>=0 && c<board[0].size() &&  
-    			board[r][c]!='.' && board[r][c]==word[curr]){
+    		if(r>=0 && r<board.size() && c>=0 && c<board[0].size() && board[r][c]!='.' && board[r][c]==word[curr]){
     			board[r][c] = '.';
     			if(dfs(board, r, c, word, curr+1)){return true;}
     			board[r][c] = word[curr];
