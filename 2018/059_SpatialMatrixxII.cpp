@@ -12,31 +12,37 @@ class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
     	vector<vector<int>> ret(n, vector<int>(n, 0));
-    	int k = 1;
-    	int loop = 0;
-    	while(k<=n*n){
-    		int p = loop;
-    		// left to right : 行坐标都是loop 列坐标递进范围
-    		while(p<n-loop){
-    			ret[loop][p++] = k++;
-    		}
-    		// up to down : 行坐标递减 列坐标都是n-loop-1
-    		p = loop+1;
-    		while(p<n-loop){
-    			ret[p++][n-loop-1] = k++;
-    		}
-    		// right to left : 行坐标不变都是n-loop-1 列坐标递减
-    		p = n - 2 - loop;
-    		while(p>=loop){
-    			ret[n-loop-1][p--] = k++;
-    		}
-    		// down to up : 行坐标递减 列坐标不变 都是loop
-    		p = n - 2 - loop;
-    		while(p>loop){
-    			ret[p--][loop] = k++;
-    		}
-    		loop++;
-    	}
-    	return ret;
+        int r1 = 0;
+        int r2 = n-1;
+        int c1 = 0;
+        int c2 = n-1;
+        int val = 0;
+        while(r1<=r2 && c1<=c2){
+            // up row
+            for(int i=c1; i<=c2; i++){
+                ret[r1][i] = ++val;
+            }
+            // left column
+            for(int i=r1+1; i<=r2; i++){
+                ret[i][c2] = ++val;
+            }
+            // bottom row
+            if(r1!=r2){
+                for(int i=c2-1; i>=c1; i--){
+                    ret[r2][i] = ++ val;
+                }
+            }
+            // right column
+            if(c1!=c2){
+                for(int i=r2-1; i>=r1+1; i--){
+                    ret[i][c1] = ++val;
+                }
+            }
+            r1++;
+            r2--;
+            c1++;
+            c2--;
+        }
+        return ret;
     }
 };

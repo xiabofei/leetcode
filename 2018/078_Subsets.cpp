@@ -7,28 +7,25 @@
 #include <map>
 
 using namespace std;
-
+    
 class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
     	vector<vector<int>> ret;
     	vector<int> tmp;
     	int index = 0;
-    	backtracing(ret, tmp, nums, index);
+        sort(nums.begin(), nums.end());
+    	dfs(ret, tmp, nums, index);
     	return ret;
     }
-    void backtracing(
-    	vector<vector<int>>& ret,
-    	vector<int>& tmp,
-    	vector<int>& nums,
-    	int index){
-    	if(index==nums.size()){
-    		ret.push_back(tmp);
-    		return;
-    	}
-    	tmp.push_back(nums[index]);
-    	backtracing(ret, tmp, nums, index+1);
-    	tmp.pop_back();
-    	backtracing(ret, tmp, nums, index+1);
+    void dfs(vector<vector<int>>& ret, vector<int>& tmp, vector<int>& nums, int index){
+        ret.push_back(tmp);
+        // 深搜的标准写法
+        for(int i=index; i<nums.size(); i++){
+            tmp.push_back(nums[i]);
+            // 每轮只向下迭代i之后的元素
+            dfs(ret, tmp, nums, i+1);
+            tmp.pop_back();
+        }
     }
 };
