@@ -9,6 +9,10 @@
 using namespace std;
 
 
+// 1) 先sort
+// 2) 固定一个i
+// 3) l和r两边往中间夹
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {

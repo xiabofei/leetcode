@@ -9,6 +9,13 @@
 using namespace std;
 
 
+// 4sum 系列可以卡范围
+// 先sort
+// i卡住左边 (第一层循环)
+// j卡住右边 (第二层循环)
+// 在i和j之间 用l和r往中间夹
+
+
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) {

@@ -9,6 +9,9 @@
 using namespace std;
 
 
+// 生成所有可能的情况 用回溯法
+// 每次传进来一个begin的位置
+
 class Solution {
 public:
 	vector<string> candidates = {

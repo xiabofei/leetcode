@@ -8,6 +8,9 @@
 
 using namespace std;
 
+
+// dp[i][j]的状态转移分j-i的取值分类讨论
+
 class Solution {
 public:
     string longestPalindrome(string s) {
