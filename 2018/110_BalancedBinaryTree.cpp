@@ -13,6 +13,10 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+// 这里用了一个返回值的技巧
+// 如果left或者right是平衡的 则返回最大深度
+// 如果left或者right有不平衡 则返回-1
+
 class Solution {
 public:
     bool isBalanced(TreeNode* root){

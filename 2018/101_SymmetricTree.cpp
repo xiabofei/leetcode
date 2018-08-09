@@ -12,8 +12,27 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+
+// 利用same tree的思想
+// 对tree进行 root - left - right 和 root - right - left两种遍历方式
+// 两种遍历方式满足same tree则符合条件
+
 class Solution {
 public:
+    bool isSymmetric(TreeNode* root) {
+        return symmetric(root, root);
+    }
+    bool symmetric(TreeNode* r1, TreeNode* r2){
+        if(!r1 && !r2){return true;}
+        if(!r1 && r2){return false;}
+        if(r1 && !r2){return false;}
+        if(r1->val!=r2->val){return false;}
+        bool sym1 = symmetric(r1->left, r2->right);
+        if(!sym1){return false;}
+        bool sym2 = symmetric(r1->right, r2->left);
+        return sym2;
+    }
+    /*
     bool isSymmetric(TreeNode* root) {
     	if(!root){return true;}
     	if(!root->left && root->right){return false;}
@@ -36,4 +55,5 @@ public:
     	root->right = Solution::invert(tmp);
     	return root;
     }
+    */
 };
