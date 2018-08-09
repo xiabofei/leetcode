@@ -4,6 +4,10 @@
 
 using namespace std;
 
+// 1) p1和p2往前移动的时候都留一个富余
+// 2) 当p1->next与p2->next不等的时候 看看p1和p2是否挨着 判断是否要留下来
+// 3) 退出时候再判断一把
+
 struct ListNode {
 	int val;
 	ListNode *next;

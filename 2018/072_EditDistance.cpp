@@ -8,6 +8,9 @@
 
 using namespace std;
 
+
+// word1 → word2 转化
+
 class Solution {
 public:
     int minDistance(string word1, string word2) {

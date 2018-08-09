@@ -9,6 +9,13 @@
 
 using namespace std;
 
+
+// 思路与merge interval类似
+// 用stack数据结构
+// 对每个interval先于newInterval作比较
+// 如果没有交集就入栈
+// 如果有交集 先merge 再与栈顶的interval比较 直到与栈顶元素没有交集了再出栈
+
 struct Interval {
 	int start;
 	int end;
