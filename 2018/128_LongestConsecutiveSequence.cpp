@@ -43,5 +43,34 @@ public:
     		longest = max(longest, count);
     	}
     	return longest;
+        /*
+        // 还有一种只用一个额外空间的解法
+        // 这种O(n)的可以想到用hashmap
+        if(nums.size()==0){return 0;}
+        unordered_set<int> sets;
+        for(int i=0; i<nums.size(); i++){
+            sets.insert(nums[i]);
+        }
+        int ret = -1;
+        for(int i=0; i<nums.size(); i++){
+            if(sets.find(nums[i])!=sets.end()){
+                int tmp_len = 1;
+                int cur = nums[i];
+                // 连续大的
+                while(sets.find(++cur)!=sets.end()){
+                    tmp_len++;
+                    sets.erase(cur);
+                }
+                cur = nums[i];
+                // 连续小的
+                while(sets.find(--cur)!=sets.end()){
+                    tmp_len++;
+                    sets.erase(cur);
+                }
+                ret = max(ret, tmp_len);
+            }
+        }
+        return ret;
+        */
     }
 };

@@ -8,29 +8,27 @@
 
 using namespace std;
 
+
+// dp_global : 讨论点'最后一次交易是否在当天完成'
+// dp_local : 最后一次交易在当天完成获得的最大利润
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-    	// 总天数和交易次数限制
     	int days = prices.size();
     	if(days<2){return 0;}
     	int trans = 2;
-    	// global和local双dp
     	int dp_global[days][trans+1];
     	int dp_local[days][trans+1];
     	fill_n(&dp_global[0][0], days*(trans+1), 0);
     	fill_n(&dp_local[0][0], days*(trans+1), 0);
-    	// 走双dp
     	for(int d=1; d<days; d++){
     		int tmp_profit = prices[d]-prices[d-1];
     		for(int t=1; t<=trans; t++){
-    			// 第t次交易一定在d天执行 local[d]的最优值有如下两种情况
-    			// 1) 从global[d-1]得到local[d]的最优值: d天的第t次交易是赚的 就d-1买d卖 否则就d天当天买卖
-    			// 2) 从local[d-1]得到local[d]的最优值: 无论d天的交易是否盈利 都跟d-1天的连起来(原来在d-1天卖的 现在多挺一天)
-    			dp_local[d][t] = max(dp_global[d-1][t-1]+max(tmp_profit, 0), dp_local[d-1][t]+tmp_profit);
-    			// 同样执行了t次交易 global[d]的最优值有如下两种选择:
-    			// 1) 第t次交易不涉及d天 → global[d-1]
-    			// 2) 第t次交易一定在d天 → local[d]
+    			dp_local[d][t] = max(
+                    dp_global[d-1][t-1]+max(tmp_profit, 0), 
+                    dp_local[d-1][t]+tmp_profit
+                    );
     			dp_global[d][t] = max(dp_local[d][t], dp_global[d-1][t]);
     		}
     	}
