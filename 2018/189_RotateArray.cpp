@@ -8,6 +8,10 @@
 
 using namespace std;
 
+// 两个学习的点
+//  1) 把rotate拆分成三个reverse 0-end/0-k/k+1-end
+//  2) 数组的reverse可以用reverse实现
+
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {

@@ -8,22 +8,25 @@
 
 using namespace std;
 
+// 子数组乘积与和的不同在于有正负
+// 子数组和只考虑最大即可 子数组乘积需要同时考虑最大最小
+
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-    	vector<int> max_v(nums.size(), 0);
-    	vector<int> min_v(nums.size(), 0);
-    	// 必定包含当前元素的最大值
-    	max_v[0] = nums[0];
-    	// 必定包含当前元素的最小值
-    	min_v[0] = nums[0];
-    	int ret = nums[0];
-    	// 遍历
-    	for(int i = 1; i < nums.size(); i++){
-    		max_v[i] = max(nums[i], max(nums[i] * max_v[i-1], nums[i] * min_v[i-1]));
-    		min_v[i] = min(nums[i], min(nums[i] * max_v[i-1], nums[i] * min_v[i-1]));
-    		ret = max(ret, max_v[i]);
-    	}
-    	return ret;
+        vector<int> max_local(nums.size(), 0);
+        vector<int> min_local(nums.size(), 0);
+        max_local[0] = nums[0];
+        min_local[0] = nums[0];
+        int ret = max_local[0];
+        for(int i=1; i<nums.size(); i++){
+            int opt1 = nums[i];
+            int opt2 = nums[i] * max_local[i-1];
+            int opt3 = nums[i] * min_local[i-1];
+            max_local[i] = max(opt1, max(opt2, opt3));
+            min_local[i] = min(opt1, min(opt2, opt3));
+            ret = max(ret, max_local[i]);
+        }
+        return ret;
     }
 };

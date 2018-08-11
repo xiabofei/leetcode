@@ -9,6 +9,11 @@
 
 using namespace std;
 
+// word break
+// 这种dp需要一个前提 知道每个subwords是否在dict中
+// 与131 PalindromePartitioning类似
+// dp的过程需要与dp时间复杂度类似的操作支持
+
 class Solution {
 public:
 	bool wordBreak(string s, vector<string>& wordDict) {
