@@ -4,8 +4,9 @@
 
 using namespace std;
 
-/*
-// 大顶堆解法
+// 大顶堆解
+// 注意的地方 每次都把排序好的值放到最后一个位置
+// 因为adjust_heap能正常调整堆的前提是array的range是从0开始的
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -33,7 +34,7 @@ public:
     	}
     }
 };
-*/
+/*
 // 快排序解法 
 // 核心: 每次执行完一个pass之后 判断要找的 topk 可能出现在pivot的 左侧 / 右侧 / 当前位置
 // target意义是: 每次执行完quick之后,要找到多少比pivot小的值
@@ -46,27 +47,28 @@ public:
     int findKthLargest(vector<int>& nums, int k) {
     	return Solution::quickSelect(nums, 0, nums.size()-1, nums.size()-k);
     }
-    int quickSelect(vector<int>& nums, int b, int e, int target){
-    	if(b==e && target==0){return nums[b];}
-    	if(b+1==e && target==1){return max(nums[b], nums[e]);}
-    	int pivot = nums[b];
-    	int lp = b;
-    	int rp = e;
-    	while(lp<rp){
-    		while(lp<rp && nums[rp]>=pivot){rp--;}
-    		while(lp<rp && nums[lp]<=pivot){lp++;}
-    		swap(nums[lp], nums[rp]);
-    	}
-    	swap(nums[b], nums[rp]);
-    	if(rp-b>target){
-    		return Solution::quickSelect(nums, b, rp-1, target);
-    	}
-    	if(rp-b<target){
-    		return Solution::quickSelect(nums, rp+1, e, target-(rp-b+1));
-    	}
-    	return nums[rp];
+    int quickSelect(vector<int>& nums, int b, int e, int t){
+        if(b==e){return nums[b];}
+        int l = b;
+        int r = e;
+        while(l<r){
+            while(l<r && nums[r]>=nums[b]){r--;}
+            while(l<r && nums[l]<=nums[b]){l++;}
+            swap(nums[l], nums[r]);
+        }
+        swap(nums[b], nums[r]);
+        if(r-b>t){
+            return quickSelect(nums, b, r-1, t);
+        }
+        else if(r-b<t){
+            return quickSelect(nums, r+1, e, t-(r-b+1));
+        }
+        else{
+            return nums[r];
+        }
     }
 };
+*/
 int main(int argc, char const *argv[])
 {
 	static const int arr[] = {10, 80, 70, 100, 90, 30, 20};
