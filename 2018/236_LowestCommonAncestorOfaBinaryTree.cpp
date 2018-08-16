@@ -21,8 +21,7 @@ public:
     	if(!root){return NULL;}
     	if(root==p || root==q){return root;}
     	TreeNode* l = Solution::lowestCommonAncestor(root->left, p, q);
-    	TreeNode* r = Solution::lowestCommo nAncestor(root->right, p, q);
-    	if(!l && !r){return NULL;}
+    	TreeNode* r = Solution::lowestCommonAncestor(root->right, p, q);
     	if((l==q && r==p) || (l==p && r==q)){return root;}
     	return l ? l : r;
     }

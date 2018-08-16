@@ -10,6 +10,7 @@
 using namespace std;
 
 
+// ugly number就是维护多个序列
 // 属于ugly number II的扩展版
 // 维护n+1个list
 // '1'指的是历史ugly number的序列

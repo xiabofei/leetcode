@@ -16,6 +16,8 @@ using namespace std;
 // 不断改变mid 直到left与right相等为止
 // 为什么比mid小的时候 
 
+// 这种部分有序的 尽量想办法利用有序的部分
+
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {

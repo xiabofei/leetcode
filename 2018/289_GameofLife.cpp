@@ -10,6 +10,7 @@ using namespace std;
 
 // 题意好理解 难点在in-place完成状态更新
 // https://segmentfault.com/a/1190000003819277
+// Game life 可以用bit存放结果 然后移位操作
 // 采用编码和bit操作
 // 第二个bit代表本轮状态  第一个bit代表下轮状态
 // dead from dead : 00 → 0

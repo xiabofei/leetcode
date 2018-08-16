@@ -13,9 +13,9 @@ using namespace std;
 
 
 // http://www.cnblogs.com/grandyang/p/4656517.html
-// 用双向队列的做法
-// 队列中始终保持不超过1个元素
-// 维护一个deque 保持当前k个长度的窗口 最大值一定在front就可以了
+// 在deque中保留上一轮k个元素最大值的index
+// 每轮只保留最大值和最大值之后元素的index
+// 保留上轮最大值的下标 没必要把所有值都放在里面
 
 class Solution {
 public:
