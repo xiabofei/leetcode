@@ -8,6 +8,10 @@
 
 using namespace std;
 
+
+// 正常找重复的 就是用hashmap
+// 这种加了1-n的取值限定的 可以用下标归位法
+
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {

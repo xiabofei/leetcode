@@ -16,22 +16,24 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-
 // https://leetcode.com/problems/path-sum-iii/discuss/91877/C++-5-Line-Body-Code-DFS-Solution
-// 题意限定了 只能是由上到下的路径
-// 有种代码简洁但是时间复杂度略高的计算
-// 从每个节点开始 都往下走
-// 采用双递归
+// pathSum用先序遍历 每次以root / root->left / root->right为开头
+// preorder遍历了所有途径当前节点path
 
 class Solution {
 public:
     int pathSum(TreeNode* root, int sum) {
-    	if(!root){return 0;}
-    	return help(root, 0, sum) + pathSum(root->left, sum) + pathSum(root->right, sum);
+        if(!root){return 0;}
+        int from_curr = preorder(root, 0, sum);
+        int from_left = pathSum(root->left, sum);
+        int from_right = pathSum(root->right, sum);
+        return  from_curr + from_left + from_right;
     }
-    int help(TreeNode* root, int pre, const int sum){
-    	if(!root){return 0;}
-    	int curr = pre + root->val;
-    	return (curr==sum) + help(root->left, curr, sum) + help(root->right, curr, sum);
+    int preorder(TreeNode* root, int pre, const int sum){
+        if(!root){return 0;}
+        int curr = pre+root->val==sum;
+        int left = preorder(root->left, pre+root->val, sum);
+        int right = preorder(root->right, pre+root->val, sum);
+        return curr + left + right;
     }
 };

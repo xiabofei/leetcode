@@ -33,6 +33,5 @@ public:
     	int left = longestSubstring(s.substr(0, split), k);
     	int right = longestSubstring(s.substr(split+1), k);
     	return max(left, right);
-
     }
 };
