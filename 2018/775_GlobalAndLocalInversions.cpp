@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 // https://blog.csdn.net/liuchuo/article/details/79195105
 // 最多允许index相差1的可以大小翻转 
 // index相差大于等于2的 只能是左小右大

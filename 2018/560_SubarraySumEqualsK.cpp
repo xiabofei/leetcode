@@ -16,6 +16,10 @@ using namespace std;
 // 在累加到N的时候 判断前面出现了多少个累加是sum-k
 // 如果sum-k==0 则只能有一种可能 就是sum==k 这时候初始化sum=0就发挥了作用
 
+
+// 每次O(N) 相当于 '以nums[i]结尾的子数组' && '满足和为k'
+// 所以这种方式 不会出现重复计数
+
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {

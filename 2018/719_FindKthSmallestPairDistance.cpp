@@ -14,6 +14,11 @@ using namespace std;
 // 每次都把当前distance下的cnt算出来
 // distance是多少时 比distance小的正好等于k
 
+
+// 0) 先排序
+// 1) 每次二分内部 实现的一个two points查找结构 查找差距小于dist的 (敢用双指针的原因是已经排序了)
+// 2) 整个事件复杂度是O(nlogn)
+
 class Solution {
 public:
 	int smallestDistancePair(vector<int>& nums, int k) {

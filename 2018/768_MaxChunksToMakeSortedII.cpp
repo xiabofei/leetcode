@@ -22,19 +22,15 @@ public:
     	// 求0:i的最大值
     	vector<int> left_mx(arr.size(), INT_MIN);
     	left_mx[0] = arr[0];
-    	// cout << "left" << endl;
     	for(int i=1; i<arr.size(); i++){
     		left_mx[i] = max(left_mx[i-1], arr[i]);
-    		// cout << left_mx[i] << endl;
     	}
     	// 求i:N的最小值
     	int mi = INT_MAX;
     	vector<int> right_mi(arr.size(), INT_MAX);
     	right_mi[arr.size()-1] = arr.back();
-    	// cout << "right" << endl;
     	for(int i=arr.size()-2; i>=0; i--){
     		right_mi[i] = min(right_mi[i+1], arr[i]);
-    		// cout << right_mi[i] << endl;
     	}
     	// 扫描找所有可能的切分点
     	int ret = 1;

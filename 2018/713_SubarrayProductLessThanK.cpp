@@ -12,6 +12,10 @@ using namespace std;
 // http://www.cnblogs.com/grandyang/p/7753959.html
 // 用nums[i]卡住一头 每次都累加 一定包含nums[i]且在i左侧的能有多少sub array满足条件
 
+// 连续子数组的'乘积'或'和'
+// two points思路 一个指针先往前走 找到满足条件的解
+// 另一个指针往前推
+
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {

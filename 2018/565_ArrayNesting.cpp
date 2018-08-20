@@ -9,6 +9,9 @@
 
 using namespace std;
 
+
+// 核心就是维护一个hashset 记录已经访问过的path
+
 class Solution {
 public:
     int arrayNesting(vector<int>& nums) {

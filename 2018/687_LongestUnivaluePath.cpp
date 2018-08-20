@@ -15,6 +15,11 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+
+// 返回的是from left 或 from right最大的
+// 更新的时候考虑curr node
+
+
 class Solution {
 public:
     int longestUnivaluePath(TreeNode* root) {

@@ -7,7 +7,13 @@
 #include <queue>
 #include <map>
 
+// 有个基础版本[392. Is Subsequence] https://leetcode.com/problems/is-subsequence/description/
+// 是否是子串 two pointers 不断匹配短的 双双往前推进
+
+
 // https://leetcode.com/problems/number-of-matching-subsequences/discuss/117575/C++-12-Line-Solution-with-Explanation
+// 作为Is Subsequence的加强版 
+// 用额外的二维数组 记录每个字母依次出现的位置
 
 using namespace std;
 

@@ -31,6 +31,7 @@ public:
     			cnt--;
     		}
     		else{
+                // 剪枝部分
     			if(nums[i]>=sum){
     				return;
     			}

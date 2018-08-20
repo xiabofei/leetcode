@@ -10,6 +10,8 @@
 using namespace std;
 
 
+// 最长连续子串的变种
+
 class Solution {
 public:
     int findLength(vector<int>& A, vector<int>& B) {

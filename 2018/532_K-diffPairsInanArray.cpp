@@ -9,6 +9,11 @@
 
 using namespace std;
 
+
+// 两个差值的 
+// sort一把 大小有序
+// 通过hashmap 走O(N)可以搞定
+
 class Solution {
 public:
 	int findPairs(vector<int>& nums, int k) {
